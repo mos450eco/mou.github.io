@@ -1,1 +1,51 @@
+/* 文字のフォントと、ページ全体に少し余白を設定します */
+body {
+    font-family: 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+    margin: 20px;
+    padding: 0;
+    line-height: 1.6; /* 行の高さを調整して読みやすくします */
+    color: #333; /* 文字の色を少し濃い灰色にします */
+}
 
+/* H1要素のスタイル */
+h1 {
+    color: #007bff; /* 青色で見やすくします */
+    font-size: 2.5em; /* フォントサイズを大きくします */
+    border-bottom: 3px solid #007bff; /* 下線をつけて強調します */
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* H2要素のスタイル */
+h2 {
+    color: #28a745; /* 緑色で見やすくします */
+    font-size: 1.8em;
+    margin-top: 40px;
+    background-color: #e9ffe5; /* 背景に薄い色をつけて区切ります */
+    padding: 10px;
+    border-left: 5px solid #28a745;
+}
+
+/* H3要素のスタイル */
+h3 {
+    color: #ffc107; /* 黄色っぽい色を使います */
+    font-size: 1.4em;
+    margin-top: 20px;
+}
+
+/* P要素（段落）のスタイル */
+p {
+    font-size: 1em;
+    margin-bottom: 15px;
+    text-align: justify; /* 両端揃えにして体裁を整えます */
+}
+
+/* footerのスタイル */
+footer {
+    margin-top: 50px;
+    padding-top: 15px;
+    border-top: 1px dashed #ccc;
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+}
