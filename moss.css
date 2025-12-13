@@ -1,8 +1,31 @@
-/* ... [H1タイトル] ... */
+/* ---------------------------------------------------------------- */
+/* 1. 基本設定（パステルカラー＆リセット） */
+/* ---------------------------------------------------------------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #444; 
+    /* 背景: 薄い水色と薄いピンクの優しいパステルグラデーション */
+    background: linear-gradient(135deg, #E0F7FA 0%, #FFC0CB 100%); 
+    overflow-x: hidden; 
+    padding-bottom: 80px;
+}
+
+/* ---------------------------------------------------------------- */
+/* 2. H1タイトル (サイズ調整済み) */
+/* ---------------------------------------------------------------- */
+main { max-width: 700px; margin: 0 auto; padding: 0 15px; }
+
 h1 {
     color: #4A148C; 
     background-color: #FFECB3; 
-    font-size: 2.2em; /* ★サイズを調整★ */
+    font-size: 2.2em; /* 🌟が悪目立ちしないようにサイズ調整 */
     text-align: center;
     padding: 20px 15px;
     margin: 0 auto 30px auto;
@@ -11,40 +34,94 @@ h1 {
     border: 3px solid #81D4FA; 
     box-shadow: 6px 6px 0px #F48FB1; 
     border-radius: 10px;
-    word-break: keep-all; /* ★改行防止★ */
+    word-break: keep-all; 
 }
 
-/* ... [main] ... */
 
 /* ---------------------------------------------------------------- */
 /* 3. セクション（info-card）の統一デザイン */
 /* ---------------------------------------------------------------- */
 .info-card {
-    background: #fff; /* ★白い背景を確保★ */
+    background: #fff; /* ★すべてのセクションで白い背景を確保★ */
     margin-bottom: 30px;
-    border: 3px solid #90CAF9; 
+    border: 3px solid #90CAF9; /* デフォルトの枠線色 */
     border-radius: 15px;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); 
     overflow: hidden;
     padding-bottom: 10px;
 }
 
-/* ... [H2, H3, H4 のスタイルは前回同様の統一感のある設定] ... */
+/* H2, H3の基本デザイン（デフォルト） */
+h2, h3 {
+    color: #00BCD4; 
+    font-size: 1.5em;
+    padding: 15px 25px;
+    margin: 0;
+    background-color: #E0F7FA; 
+    border-radius: 15px 15px 0 0;
+    border-bottom: 3px solid #00BCD4;
+}
 
-/* ★★★ テーマカラー付きセクションの調整 ★★★ */
+h3 {
+    font-size: 1.4em;
+    text-align: center;
+}
+
+/* H4のデザイン（セクション内の小見出し） */
+h4 {
+    font-size: 1.1em;
+    padding: 5px 25px 0 25px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #4DB6AC; /* デフォルトの色 */
+}
+
+/* 段落のスタイル */
+.info-card p {
+    padding: 5px 25px;
+    margin: 0;
+    font-size: 1em;
+}
+
+/* ---------------------------------------------------------------- */
+/* 4. テーマカラー（セクション単位での色分け） */
+/* ---------------------------------------------------------------- */
 
 /* 子供向け（ピンク系） */
 .theme-pink { border-color: #F48FB1; } 
-.theme-pink h3 { /* ... スタイルは前回同様 ... */ }
+.theme-pink h3 {
+    background-color: #F8BBD0; 
+    color: #E91E63; 
+    border-bottom-color: #E91E63;
+}
 .theme-pink h4 { color: #E91E63; }
 
 /* ファッション（水色系） */
 .theme-blue { border-color: #90CAF9; }
-.theme-blue h3 { /* ... スタイルは前回同様 ... */ }
+.theme-blue h3 {
+    background-color: #B2EBF2; 
+    color: #00BCD4; 
+    border-bottom-color: #00BCD4;
+}
 .theme-blue h4 { color: #00BCD4; }
 
 /* グルメ（黄色系） */
 .theme-yellow { border-color: #FFB74D; }
-.theme-yellow h2 { /* ... スタイルは前回同様 ... */ }
+.theme-yellow h2 {
+    background-color: #FFF9C4; 
+    color: #FFB74D; 
+    border-bottom-color: #FFB74D;
+}
 .theme-yellow h4 { color: #FFB74D; }
-/* ... [フッター] ... */
+
+
+/* ---------------------------------------------------------------- */
+/* 5. フッター */
+/* ---------------------------------------------------------------- */
+footer {
+    text-align: center;
+    padding: 30px 20px 0 20px;
+    font-size: 1em;
+    color: #66BB6A; 
+    font-weight: bold;
+}
