@@ -1,8 +1,8 @@
 /* ---------------------------------------------------------------- */
-/* ゼロリセット＆全体設定：高彩度とポップなフォント */
+/* ゼロリセット＆全体設定：パステルベース */
 /* ---------------------------------------------------------------- */
 * {
-    box-sizing: border-box; /* 枠線やパディングを幅に含める */
+    box-sizing: border-box;
 }
 
 body {
@@ -10,55 +10,55 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #222;
-    /* 背景は鮮やかなグラデーションでポップに */
-    background: linear-gradient(135deg, #FF6F61 0%, #FFD166 100%); /* サンゴ色と明るいオレンジ */
+    color: #333;
+    /* 背景はTADCのテントをイメージした落ち着いたパステル */
+    background: #f7f3e8; 
     overflow-x: hidden;
     position: relative;
     padding-bottom: 60px;
 }
 
 /* ---------------------------------------------------------------- */
-/* H1タイトル：原色、太枠、影で装飾 */
+/* H1タイトル：パステルをベースに、装飾でポップに */
 /* ---------------------------------------------------------------- */
 h1 {
-    color: #fff;
-    background-color: #E6007A; /* 鮮やかなマゼンタピンク */
+    color: #333; /* 文字を暗くしてシックに */
+    background-color: #A9E4D7; /* パステルミントグリーン */
     font-size: 3em;
     text-align: center;
     padding: 20px 10px;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 35px auto;
     width: 90%;
-    border: 6px solid #0000FF; /* 鮮やかな青の太枠 */
-    box-shadow: 8px 8px 0px #FFD700; /* 派手な金色の影 */
-    text-shadow: 2px 2px 0px #000; /* 文字の視認性向上 */
-    border-radius: 15px; /* 角を丸く */
-    letter-spacing: 1px;
+    /* 太い枠線と影で立体感を出す */
+    border: 5px solid #E6007A; /* 差し色としてビビッドなマゼンタ */
+    box-shadow: 10px 10px 0px #FFD700; /* ポップな黄色の影 */
+    border-radius: 10px;
 }
 
 /* ---------------------------------------------------------------- */
-/* H2とセクションのデザイン：すっきりとしたカード型 */
+/* セクションのデザイン：立体的なカード型 */
 /* ---------------------------------------------------------------- */
 h2 {
-    color: #0000FF; /* 青 */
+    color: #E6007A; /* H2もビビッドなマゼンタ */
     font-size: 1.8em;
     padding: 15px 20px;
     margin: 0;
-    /* 見出し背景もポップに */
-    background-color: #FFFF99; /* 鮮やかなレモンイエロー */
-    border-bottom: 4px dashed #FF0000; /* 赤の破線で賑やかに */
+    background-color: #FFECB3; /* パステルレモンイエロー */
+    border-bottom: 3px solid #E6007A;
     text-align: left;
 }
 
 .section {
-    max-width: 880px;
-    margin: 30px auto;
+    max-width: 900px;
+    margin: 35px auto;
     background: #fff;
-    border: 4px solid #000; /* 太い黒の枠線 */
-    border-radius: 15px; /* 角を丸く */
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    border: 4px solid #333; /* 落ち着いた黒に近い枠 */
+    border-radius: 20px; /* 角を大きく丸く */
+    /* 立体感を出すために影を強調 */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4); 
+    position: relative;
     overflow: hidden;
-    padding-bottom: 1px; /* ボックスシャドウを適用するための調整 */
+    padding-bottom: 1px;
 }
 
 .section p {
@@ -68,89 +68,106 @@ h2 {
 }
 
 /* ---------------------------------------------------------------- */
-/* スポット（下部のカード）のデザイン */
+/* スポット（下部のカード）のデザイン：幅を均等に調整 */
 /* ---------------------------------------------------------------- */
 .spot-section {
     /* H2とカードを区切るためのシンプルなH2スタイル */
     
-    /* カードの配置 */
+    /* カードの配置を修正し、幅が均等になるように調整 */
     display: flex;
     justify-content: space-between;
     padding: 25px 30px;
-    gap: 25px; /* カード間のスペース */
+    gap: 20px; /* カード間のスペース */
 }
 
 .spot {
-    flex: 1;
-    display: block; /* 縦並びのブロックとして扱う */
-    border: 3px solid #000; /* 黒の枠線 */
+    flex: 1; /* 幅を完全に均等にする */
+    min-width: 45%; /* 極端に細くならないように最小幅設定 */
+    display: block;
+    border: 4px solid #333; /* 全体を囲む黒枠 */
     border-radius: 10px;
-    box-shadow: 5px 5px 0px #666; /* 立体感を出す影 */
-    overflow: hidden;
+    box-shadow: 6px 6px 0px #999; /* 立体感を出す影 */
+    transition: transform 0.3s;
+}
+
+.spot:hover {
+    transform: translateY(-5px); /* ホバーで少し浮き上がらせる */
 }
 
 /* H3の見出しのデザイン */
 .spot h3 {
     color: #fff;
     font-size: 1.4em;
-    padding: 10px 15px;
+    padding: 12px 15px;
     margin: 0;
     text-align: center;
-    text-shadow: 1px 1px 0 #000;
-    border-bottom: 3px solid #000; /* H3の下に太線 */
+    text-shadow: 1px 1px 0 #333;
+    border-bottom: 3px solid #333;
 }
 
 .spot p {
     padding: 15px;
 }
 
-/* カードの色バリエーション */
+/* カードの色バリエーション（パステルカラーを使用） */
 .green-bg {
-    background-color: #F0FFF0; /* 内部背景を薄い緑に */
+    background-color: #E0F7FA; /* 内部背景を明るい水色 */
 }
 
 .green-bg h3 {
-    background-color: #008000; /* 濃い緑 */
+    background-color: #64B5F6; /* パステルブルー */
 }
 
 .yellow-bg {
-    background-color: #FFFFE0; /* 内部背景を薄い黄色に */
+    background-color: #FFFDE7; /* 内部背景をクリーム色 */
 }
 
 .yellow-bg h3 {
-    background-color: #FF8C00; /* 濃いオレンジ */
+    background-color: #FFB74D; /* パステルオレンジ */
 }
 
+/* ---------------------------------------------------------------- */
+/* 背景の図形（動く/動かないを解消し、セクションごとに配置） */
+/* ---------------------------------------------------------------- */
 
-/* ---------------------------------------------------------------- */
-/* 背景の図形 (ゴチャゴチャ感) */
-/* ---------------------------------------------------------------- */
-/* 赤の四角 */
-body::before {
+/* 各セクションの角に図形を配置し、スクロールで動くようにする */
+.section::before, .section::after {
     content: '';
-    position: fixed;
-    top: 15%;
-    left: -50px;
-    width: 100px;
-    height: 100px;
-    background-color: rgba(255, 0, 0, 0.7);
-    transform: rotate(10deg);
+    position: absolute;
+    width: 50px;
+    height: 50px;
     z-index: -1;
 }
 
-/* 青の三角 */
-body::after {
+/* 1番目のセクションの左上 */
+.section:nth-child(1)::before {
+    top: -20px;
+    left: -20px;
+    background-color: rgba(255, 99, 71, 0.8); /* サーモンピンクの四角 */
+    transform: rotate(5deg);
+    border-radius: 10px;
+}
+
+/* 2番目のセクションの右下 */
+.section:nth-child(2)::after {
+    bottom: -10px;
+    right: -10px;
+    background-color: rgba(72, 201, 176, 0.8); /* ターコイズの円 */
+    border-radius: 50%;
+    transform: rotate(45deg);
+}
+
+/* スポットセクションの図形 */
+.spot-section::before {
     content: '';
-    position: fixed;
-    bottom: 5%;
-    right: -40px;
-    width: 0;
-    height: 0;
-    border-left: 80px solid transparent;
-    border-right: 80px solid transparent;
-    border-bottom: 120px solid rgba(0, 0, 255, 0.7);
-    transform: rotate(-20deg);
-    z-index: -1;
+    position: absolute;
+    top: -15px;
+    right: 50px;
+    width: 40px;
+    height: 60px;
+    background-color: rgba(255, 204, 0, 0.9); /* 黄色の長方形 */
+    transform: skewY(10deg);
+    z-index: 0;
 }
 
 /* ---------------------------------------------------------------- */
@@ -160,7 +177,6 @@ footer {
     text-align: center;
     padding: 30px 20px 0 20px;
     font-size: 1.3em;
-    color: #E6007A;
+    color: #666;
     font-weight: bold;
-    text-shadow: 1px 1px #fff;
 }
