@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------- */
-/* 1. 基本設定：パステルカラーベース */
+/* 1. 基本設定＆背景図形（パステルカラー、固定） */
 /* ---------------------------------------------------------------- */
 * {
     box-sizing: border-box;
@@ -13,46 +13,72 @@ body {
     color: #444; 
     /* 背景: 薄い水色と薄いピンクの優しいパステルグラデーション */
     background: linear-gradient(135deg, #E0F7FA 0%, #FFC0CB 100%); 
-    overflow-x: hidden; /* 図形がはみ出ても横スクロールバーが出ないようにする */
+    overflow-x: hidden; 
     position: relative;
     padding-bottom: 80px;
 }
 
+/* 背景図形（固定、パステルカラー）: 再度配置を確定 */
+.background-shape { position: fixed; z-index: -1; }
+/* HMTLに<div class="background-shape shape-N">を追記している場合のみ表示されます */
+/* 1. 薄いピンクの四角 (左上) */
+.shape-1 { @extend .background-shape; top: 50px; left: 30px; width: 60px; height: 60px; background-color: rgba(255, 171, 192, 0.8); transform: rotate(10deg); border-radius: 10px; }
+/* 2. 薄い水色の三角 (右下) */
+.shape-2 { @extend .background-shape; bottom: 50px; right: 30px; width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 80px solid rgba(179, 229, 252, 0.8); transform: rotate(15deg); }
+/* 3. 薄い黄色の円 (右上) */
+.shape-3 { @extend .background-shape; top: 100px; right: 100px; width: 40px; height: 40px; background-color: rgba(255, 255, 141, 0.9); border-radius: 50%; }
+/* 4. 薄い緑のひし形 (左中) */
+.shape-4 { @extend .background-shape; top: 30%; left: 10px; width: 50px; height: 50px; background-color: rgba(200, 230, 201, 0.7); transform: rotate(45deg); }
+
+
 /* ---------------------------------------------------------------- */
-/* 2. H1タイトル */
+/* 2. タイトルとセクションのコンテナ */
 /* ---------------------------------------------------------------- */
+main {
+    max-width: 700px; 
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
 h1 {
-    color: #4A148C; /* 濃い紫 */
-    background-color: #FFECB3; /* パステルイエロー */
+    color: #4A148C;
+    background-color: #FFECB3; 
     font-size: 2.5em;
     text-align: center;
     padding: 20px 15px;
     margin: 0 auto 30px auto;
-    max-width: 900px; /* mainと同じ幅に合わせる */
+    max-width: 900px; 
     width: 90%; 
     border: 3px solid #81D4FA; 
     box-shadow: 6px 6px 0px #F48FB1; 
     border-radius: 10px;
 }
 
-/* ---------------------------------------------------------------- */
-/* 3. メインコンテンツとカードデザイン (縦並び) */
-/* ---------------------------------------------------------------- */
-main {
-    max-width: 700px; /* スマホで見やすいように幅を絞る */
-    margin: 0 auto;
-    padding: 0 15px;
-}
 
-/* 全セクションの共通スタイル (info-card と spot-container) */
-.info-card, .spot-container {
+/* ---------------------------------------------------------------- */
+/* 3. セクション（縦並びのカード）の統一デザイン */
+/* ---------------------------------------------------------------- */
+
+/* info-card はシンプルな白背景カード */
+.info-card {
     background: #fff;
     margin-bottom: 30px;
-    border: 3px solid #90CAF9; /* 少し太い青の枠 */
+    border: 3px solid #90CAF9; 
     border-radius: 15px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); /* 立体感を強調 */
-    padding-bottom: 1px; /* 影を出すための調整 */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); 
     overflow: hidden;
+    padding-bottom: 1px;
+}
+
+/* spot-container はテーマ色の背景を持たせたカード */
+.spot-container {
+    background: #fff; /* 背景を白にしてh3に色をつけます */
+    margin-bottom: 30px;
+    border: 3px solid #FFB74D; /* 薄いオレンジの枠 */
+    border-radius: 15px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    padding-bottom: 1px;
 }
 
 /* H2とH3の統一デザイン */
@@ -63,41 +89,26 @@ h2, h3 {
     margin: 0;
     background-color: #E1BEE7; /* 薄い紫の背景 */
     border-bottom: 2px solid #CE93D8;
-}
-
-h2 {
     border-radius: 15px 15px 0 0;
 }
 
 h3 {
     /* spot-containerのメイン見出し */
     text-align: center;
-    font-size: 1.6em; /* H2より少し強調 */
+    font-size: 1.6em; 
     background-color: #F8BBD0; /* 薄いピンクの背景 */
     color: #880E4F;
-    border-bottom: 3px dashed #E91E63; /* 濃いピンクの破線 */
+    border-bottom: 3px dashed #E91E63;
 }
 
-.info-card p, .spot-container p {
-    padding: 15px 25px;
-    margin: 0;
-    font-size: 1em;
-}
 
 /* ---------------------------------------------------------------- */
-/* 4. スポットカード（個別のカード）の縦並び */
+/* 4. スポットカード（子要素）の縦並びとデザイン */
 /* ---------------------------------------------------------------- */
-
-.spot-container {
-    padding: 10px; /* 内側の余白を調整 */
-    /* 背景色をカードコンテナとして使用 */
-    background-color: #FFECB3; /* 薄い黄色 */
-    border: 3px solid #FFB74D; /* 薄いオレンジの枠 */
-}
 
 .spot-card {
     width: 95%; 
-    margin: 15px auto; /* 上下にマージンをつけて区切る */
+    margin: 15px auto; 
     background: #fff;
     border: 2px solid #ccc;
     border-radius: 10px;
@@ -105,6 +116,7 @@ h3 {
     overflow: hidden;
 }
 
+/* H4（カード内の見出し）のデザイン */
 .spot-card h4 {
     color: #fff;
     font-size: 1.2em;
@@ -123,51 +135,15 @@ h3 {
     background-color: #00BCD4; /* 濃いシアン */
 }
 
-/* ---------------------------------------------------------------- */
-/* 5. 背景図形（固定、パステルカラー）の復活 */
-/* ---------------------------------------------------------------- */
-.background-shape { 
-    position: fixed;
-    z-index: -1;
-}
-
-/* 1. 薄いピンクの四角 (左上) */
-.shape-1 {
-    @extend .background-shape;
-    top: 50px; left: 30px; width: 60px; height: 60px;
-    background-color: rgba(255, 171, 192, 0.8); 
-    transform: rotate(10deg);
-    border-radius: 10px;
-}
-
-/* 2. 薄い水色の三角 (右下) */
-.shape-2 {
-    @extend .background-shape;
-    bottom: 50px; right: 30px; width: 0; height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 80px solid rgba(179, 229, 252, 0.8); 
-    transform: rotate(15deg);
-}
-
-/* 3. 薄い黄色の円 (右上) */
-.shape-3 {
-    @extend .background-shape;
-    top: 100px; right: 100px; width: 40px; height: 40px;
-    background-color: rgba(255, 255, 141, 0.9);
-    border-radius: 50%;
-}
-
-/* 4. 薄い緑のひし形 (左中) */
-.shape-4 {
-    @extend .background-shape;
-    top: 30%; left: 10px; width: 50px; height: 50px;
-    background-color: rgba(200, 230, 201, 0.7); 
-    transform: rotate(45deg);
+/* 段落のスタイル */
+.info-card p, .spot-container p, .spot-card p {
+    padding: 15px 25px;
+    margin: 0;
+    font-size: 1em;
 }
 
 /* ---------------------------------------------------------------- */
-/* 6. フッター */
+/* 5. フッター */
 /* ---------------------------------------------------------------- */
 footer {
     text-align: center;
