@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------- */
-/* ゼロリセット＆全体設定 */
+/* ゼロリセット＆全体設定 (前回と同じ設定を維持) */
 /* ---------------------------------------------------------------- */
 @keyframes float {
     0% { transform: translateY(0px) rotate(0deg); }
@@ -17,102 +17,85 @@ body {
     padding: 0;
     line-height: 1.6;
     color: #222;
-    /* 背景を添付画像のようなオレンジ〜ピンクのグラデーションに設定 */
-    background: linear-gradient(135deg, #FF7F50 0%, #FFC0CB 100%); /* サンゴ色とピンク */
+    /* 背景: 明るいオレンジ〜ピンクのグラデーション */
+    background: linear-gradient(135deg, #FF7F50 0%, #FFC0CB 100%); 
     overflow-x: hidden;
     position: relative;
     padding-bottom: 80px;
 }
 
 /* ---------------------------------------------------------------- */
-/* 背景図形（Fixedで画面固定、量を増やす） */
-/* ---------------------------------------------------------------- */
-
-/* 1. 赤い四角 (左上) - 添付画像1枚目参照 */
-body::before {
-    content: '';
-    position: fixed; /* 画面に固定 */
-    top: 50px;
-    left: 20px;
-    width: 80px;
-    height: 80px;
-    background-color: rgba(255, 69, 58, 0.8); /* 鮮やかな赤 */
-    transform: rotate(-15deg);
-    z-index: -1;
-    border-radius: 10px;
-}
-
-/* 2. 青い三角 (右下) */
-body::after {
-    content: '';
-    position: fixed; /* 画面に固定 */
-    bottom: 50px;
-    right: 20px;
-    width: 0;
-    height: 0;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-bottom: 100px solid rgba(0, 122, 255, 0.8); /* 鮮やかな青 */
-    transform: rotate(20deg);
-    z-index: -1;
-}
-
-/* 3. 黄色の円 (右上) */
-main::before {
-    content: '';
-    position: fixed; /* 画面に固定 */
-    top: 100px;
-    right: 150px;
-    width: 60px;
-    height: 60px;
-    background-color: rgba(255, 204, 0, 0.7); /* 鮮やかな黄色 */
-    border-radius: 50%;
-    z-index: -1;
-}
-
-/* 4. 緑の四角 (左下) */
-main::after {
-    content: '';
-    position: fixed; /* 画面に固定 */
-    bottom: 150px;
-    left: 100px;
-    width: 70px;
-    height: 70px;
-    background-color: rgba(52, 199, 89, 0.8); /* 鮮やかな緑 */
-    transform: rotate(45deg);
-    z-index: -1;
-}
-
-/* ---------------------------------------------------------------- */
-/* H1タイトル：画像デザインに最も近づける */
+/* H1タイトル：【薄い色 + 鮮やかな枠と影】を実現 */
 /* ---------------------------------------------------------------- */
 h1 {
     color: #333; /* 文字色を黒に */
-    background-color: #FFEA00; /* 鮮やかな黄色に設定 */
+    background-color: #FFFACD; /* ★H1の中の色を薄いクリーム色に設定★ */
     font-size: 3em;
     text-align: center;
     padding: 20px 10px;
     margin: 0 auto 30px auto;
     width: 90%;
-    /* 添付画像のH1の太い枠線を再現 */
-    border: 5px solid #E6007A; /* 濃いマゼンタの太枠 */
-    box-shadow: 8px 8px 0px #0000FF; /* 青の影で立体感を強調 */
-    border-radius: 5px; /* 角はシャープに */
+    /* 鮮やかな枠線と影 */
+    border: 5px solid #FF0000; /* 鮮やかな赤の太枠 */
+    box-shadow: 10px 10px 0px #00FFFF, 12px 12px 0px #FF00FF; /* シアンとマゼンタの二重影で立体感と派手さを強調 */
+    border-radius: 10px; 
 }
 
 /* ---------------------------------------------------------------- */
-/* H2とセクションのデザイン */
+/* 背景図形（Fixedで画面固定、量を増やす） - 手書き図を参考に増加 */
+/* ---------------------------------------------------------------- */
+
+/* 図形を大量に配置するための共通スタイル */
+.background-shape {
+    position: fixed;
+    z-index: -1;
+}
+
+/* 1. 赤い四角 (左上) */
+.shape-red-square {
+    @extend .background-shape;
+    top: 80px; left: 30px; width: 60px; height: 60px;
+    background-color: rgba(255, 0, 0, 0.8);
+    transform: rotate(10deg);
+}
+
+/* 2. 青い三角 (右下) */
+.shape-blue-triangle {
+    @extend .background-shape;
+    bottom: 80px; right: 50px; width: 0; height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 80px solid rgba(0, 0, 255, 0.8);
+    transform: rotate(15deg);
+}
+
+/* 3. 黄色の円 (右上) */
+.shape-yellow-circle {
+    @extend .background-shape;
+    top: 150px; right: 80px; width: 40px; height: 40px;
+    background-color: rgba(255, 255, 0, 0.9);
+    border-radius: 50%;
+}
+
+/* 4. 緑のひし形 (左中) */
+.shape-green-diamond {
+    @extend .background-shape;
+    top: 40%; left: 10px; width: 50px; height: 50px;
+    background-color: rgba(0, 255, 0, 0.7);
+    transform: rotate(45deg);
+}
+
+/* ---------------------------------------------------------------- */
+/* H2とセクションのデザイン (アリオ参考画像をベース) */
 /* ---------------------------------------------------------------- */
 h2 {
-    color: #0000FF; /* 青 */
+    color: #0000FF; 
     font-size: 1.8em;
     padding: 15px 20px;
     margin: 0;
-    /* 添付画像のH2の黄色背景を再現 */
     background-color: #FFEA00; /* 鮮やかな黄色 */
     border-bottom: 4px solid #E6007A; /* マゼンタの太線 */
     text-align: left;
-    /* H2にも影をつけて、セクションから浮き出ているように見せる */
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -120,24 +103,16 @@ h2 {
     max-width: 880px;
     margin: 30px auto;
     background: #fff;
-    /* 全体を黒枠で囲む */
     border: 4px solid #333; 
     border-radius: 15px; 
-    /* 影を深くして立体感を強調 */
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4); 
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4); /* 立体感 */
     position: relative;
     overflow: hidden;
     padding-bottom: 1px;
 }
 
-.section p {
-    font-size: 1.05em;
-    padding: 20px 30px;
-    margin: 0;
-}
-
 /* ---------------------------------------------------------------- */
-/* スポット（下部のカード）のデザイン - 均等幅を維持 */
+/* スポット（下部のカード）のデザイン - アリオ参考画像風の点線枠 */
 /* ---------------------------------------------------------------- */
 .spot-section {
     display: flex;
@@ -149,10 +124,11 @@ h2 {
 .spot {
     flex: 1; 
     min-width: 45%; 
-    border: 4px solid #333; 
-    border-radius: 10px;
-    box-shadow: 6px 6px 0px #999; 
-    transition: transform 0.3s;
+    /* アリオ参考画像のような点線枠と丸みを再現 */
+    border: 3px dashed #FF0000; 
+    border-radius: 15px; /* 丸みを強調 */
+    box-shadow: 5px 5px 0px #000; /* 立体感を出す影 */
+    overflow: hidden;
 }
 
 .spot h3 {
@@ -162,56 +138,45 @@ h2 {
     margin: 0;
     text-align: center;
     text-shadow: 1px 1px 0 #333;
-    border-bottom: 3px solid #333;
+    border-bottom: 3px solid #FF0000; /* 点線枠と同じ赤 */
 }
 
 /* カードの色バリエーション（パステル系を維持） */
-.green-bg {
-    background-color: #E0F7FA; 
-}
+.green-bg { background-color: #E0F7FA; }
+.green-bg h3 { background-color: #64B5F6; }
 
-.green-bg h3 {
-    background-color: #64B5F6; /* パステルブルー */
-}
+.yellow-bg { background-color: #FFFDE7; }
+.yellow-bg h3 { background-color: #FFB74D; }
 
-.yellow-bg {
-    background-color: #FFFDE7; 
-}
-
-.yellow-bg h3 {
-    background-color: #FFB74D; /* パステルオレンジ */
-}
 
 /* ---------------------------------------------------------------- */
 /* 下部の図形（画面前、フヨフヨ動くアニメーション） */
 /* ---------------------------------------------------------------- */
 
 /* 5. 地味に動く円 (画面中央下) */
-body::after:nth-of-type(2) {
-    content: '';
+.float-shape-1 {
     position: fixed;
-    bottom: 20px;
-    left: 45%;
+    bottom: 10px;
+    left: 30%;
     width: 40px;
     height: 40px;
-    background-color: rgba(255, 99, 71, 0.7); /* サーモンピンク */
+    background-color: rgba(255, 99, 71, 0.8);
     border-radius: 50%;
-    z-index: 100; /* 手前に出す */
-    animation: float 4s ease-in-out infinite; /* フヨフヨアニメーション */
+    z-index: 100;
+    animation: float 4s ease-in-out infinite;
 }
 
 /* 6. 地味に動く四角 (画面右下) */
-body::after:nth-of-type(3) {
-    content: '';
+.float-shape-2 {
     position: fixed;
-    bottom: 10px;
-    right: 20%;
+    bottom: 5px;
+    right: 35%;
     width: 30px;
     height: 30px;
-    background-color: rgba(52, 199, 89, 0.7); /* 緑 */
+    background-color: rgba(52, 199, 89, 0.8);
     z-index: 100;
     transform: rotate(15deg);
-    animation: float 5s ease-in-out infinite reverse; /* 逆向きアニメーション */
+    animation: float 5s ease-in-out infinite reverse;
 }
 
 /* ---------------------------------------------------------------- */
