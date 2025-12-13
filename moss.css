@@ -1,229 +1,137 @@
 /* ---------------------------------------------------------------- */
-/* ゼロリセット＆全体設定 (アニメーションは維持) */
+/* 1. 基本設定：パステルカラーベース */
 /* ---------------------------------------------------------------- */
-@keyframes float {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(5deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
-}
-
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial Black', 'Hiragino Kaku Gothic ProN', sans-serif;
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #333;
-    /* 背景: 薄い水色と薄いピンクの優しいグラデーション */
-    background: linear-gradient(135deg, #E0F7FA 0%, #FFC0CB 100%); 
-    overflow-x: hidden;
-    position: relative;
-    padding-bottom: 80px;
+    color: #444; /* 文字色は少し濃いめのグレー */
+    /* 背景: 薄い水色と薄いピンクの優しいパステルグラデーション */
+    background: linear-gradient(135deg, #E8F5E9 0%, #FCE4EC 100%); /* 薄い緑と薄いピンク */
+    padding-bottom: 50px;
 }
 
 /* ---------------------------------------------------------------- */
-/* H1タイトル：(パステルカラーを維持) */
+/* 2. タイトル (H1) */
 /* ---------------------------------------------------------------- */
 h1 {
-    color: #4A148C;
-    background-color: #B3E5FC; 
-    font-size: 3em;
+    color: #333;
+    background-color: #B2EBF2; /* パステル水色 */
+    font-size: 2.5em;
     text-align: center;
-    padding: 20px 10px;
+    padding: 20px 15px;
     margin: 0 auto 30px auto;
     width: 90%;
-    border: 5px solid #81D4FA; 
-    box-shadow: 10px 10px 0px #FFD180, 12px 12px 0px #FF8A80; 
-    border-radius: 10px; 
-}
-
-/* ---------------------------------------------------------------- */
-/* H2とセクションのデザイン (パステルカラーを維持) */
-/* ---------------------------------------------------------------- */
-h2 {
-    color: #880E4F; 
-    font-size: 1.8em;
-    padding: 15px 20px;
-    margin: 0;
-    background-color: #E1BEE7; 
-    border-bottom: 4px solid #CE93D8;
-    text-align: left;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-}
-
-.section {
-    max-width: 880px;
-    margin: 30px auto;
-    background: #fff;
-    border: 4px solid #90CAF9; 
-    border-radius: 15px; 
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2); 
-    position: relative;
-    overflow: hidden;
-    padding-bottom: 1px;
-}
-
-.section p {
-    font-size: 1.05em;
-    padding: 20px 30px;
-    margin: 0;
-}
-
-/* ---------------------------------------------------------------- */
-/* スポット（下部のカード）のデザイン (パステルカラーを維持) */
-/* ---------------------------------------------------------------- */
-.spot-section {
-    display: flex;
-    justify-content: space-between;
-    padding: 25px 30px;
-    gap: 20px;
-}
-
-.spot {
-    flex: 1; 
-    min-width: 45%; 
-    border: 3px dashed #4FC3F7; 
-    border-radius: 15px; 
-    box-shadow: 5px 5px 0px #CFD8DC; 
-    overflow: hidden;
-}
-
-.spot h3 {
-    color: #fff;
-    font-size: 1.4em;
-    padding: 12px 15px;
-    margin: 0;
-    text-align: center;
-    text-shadow: 1px 1px 0 #666;
-    border-bottom: 3px solid #4FC3F7;
-}
-
-.green-bg { background-color: #F8BBD0; } 
-.green-bg h3 { background-color: #E91E63; } 
-
-.yellow-bg { background-color: #B2EBF2; } 
-.yellow-bg h3 { background-color: #00BCD4; } 
-
-/* ---------------------------------------------------------------- */
-/* 背景図形（固定） - 図形を倍増させ、配置を調整 */
-/* ---------------------------------------------------------------- */
-.background-shape { 
-    position: fixed;
-    z-index: -1;
-}
-
-/* 1. 薄いピンクの四角 (左上) */
-.shape-1 {
-    @extend .background-shape;
-    top: 50px; left: 30px; width: 60px; height: 60px;
-    background-color: rgba(255, 171, 192, 0.8); 
-    transform: rotate(10deg);
+    /* シンプルで可愛い枠と影 */
+    border: 3px solid #FFCDD2; /* 薄いピンクの枠 */
+    box-shadow: 6px 6px 0px #FFECB3; /* 薄い黄色の影 */
     border-radius: 10px;
 }
 
-/* 2. 薄い水色の三角 (右下) */
-.shape-2 {
-    @extend .background-shape;
-    bottom: 50px; right: 30px; width: 0; height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 80px solid rgba(179, 229, 252, 0.8); 
-    transform: rotate(15deg);
-}
-
-/* 3. 薄い黄色の円 (右上) */
-.shape-3 {
-    @extend .background-shape;
-    top: 100px; right: 100px; width: 40px; height: 40px;
-    background-color: rgba(255, 255, 141, 0.9);
-    border-radius: 50%;
-}
-
-/* 4. 薄い緑のひし形 (左中) */
-.shape-4 {
-    @extend .background-shape;
-    top: 30%; left: 10px; width: 50px; height: 50px;
-    background-color: rgba(200, 230, 201, 0.7); 
-    transform: rotate(45deg);
-}
-
-/* ★追加図形 5. 濃いピンクの四角 (右中) */
-.shape-5 {
-    @extend .background-shape;
-    top: 45%; right: 10px; width: 40px; height: 40px;
-    background-color: rgba(233, 30, 99, 0.9); /* 差し色として濃いピンク */
-    transform: rotate(-30deg);
-}
-
-/* ★追加図形 6. 濃い青の円 (左下) */
-.shape-6 {
-    @extend .background-shape;
-    bottom: 100px; left: 100px; width: 70px; height: 70px;
-    background-color: rgba(33, 150, 243, 0.7); /* 差し色として濃い青 */
-    border-radius: 50%;
-}
-
-/* ★追加図形 7. 薄い紫の三角 (上中) */
-.shape-7 {
-    @extend .background-shape;
-    top: 10px; left: 45%; width: 0; height: 0;
-    border-left: 30px solid transparent;
-    border-right: 30px solid transparent;
-    border-bottom: 50px solid rgba(224, 190, 247, 0.8);
-    transform: rotate(0deg);
-}
-
-/* ★追加図形 8. 薄いオレンジの四角 (下中) */
-.shape-8 {
-    @extend .background-shape;
-    bottom: 10px; right: 45%; width: 50px; height: 50px;
-    background-color: rgba(255, 204, 128, 0.9); 
-    transform: rotate(25deg);
-    border-radius: 5px;
-}
-
-
 /* ---------------------------------------------------------------- */
-/* 下部の図形（フヨフヨ動くアニメーション）- 以前のコードを再利用 */
+/* 3. メインコンテンツとカードデザイン */
 /* ---------------------------------------------------------------- */
-.float-shape-1 {
-    position: fixed;
-    bottom: 10px;
-    left: 30%;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(179, 229, 252, 0.8); 
-    border-radius: 50%;
-    z-index: 100;
-    animation: float 4s ease-in-out infinite;
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-.float-shape-2 {
-    position: fixed;
-    bottom: 5px;
-    right: 35%;
-    width: 30px;
-    height: 30px;
-    background-color: rgba(244, 143, 177, 0.8); 
-    z-index: 100;
-    transform: rotate(15deg);
-    animation: float 5s ease-in-out infinite reverse;
+.info-card {
+    background: #fff;
+    margin-bottom: 30px;
+    border: 2px solid #90CAF9; /* 薄い青の枠 */
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* 優しい立体感 */
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #00BCD4; /* シアン系 */
+    font-size: 1.5em;
+    padding: 15px 25px;
+    margin: 0;
+    background-color: #E0F7FA; /* 薄い水色の背景 */
+    border-radius: 15px 15px 0 0;
+    border-bottom: 2px solid #00BCD4;
+}
+
+.info-card p {
+    padding: 15px 25px;
+    margin: 0;
+    font-size: 1em;
 }
 
 /* ---------------------------------------------------------------- */
-/* Footer */
+/* 4. スポットコンテナ（下段の2列カード） */
+/* ---------------------------------------------------------------- */
+.spot-container {
+    padding: 20px 0;
+    background: #FFECB3; /* 薄い黄色を背景に使い、セクションを区切る */
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border: 2px solid #FFB74D;
+}
+
+.spot-container h3 {
+    text-align: center;
+    color: #FF7043; /* オレンジ系 */
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-bottom: 3px dashed #FFAB91; /* 破線で可愛く */
+    padding-bottom: 10px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* カードを横に並べる */
+.spot-container {
+    display: flex;
+    flex-wrap: wrap; /* h3とカードを縦に並べるため */
+}
+
+.spot-card {
+    width: 47%; /* 2枚並べるための幅 */
+    margin: 0 1.5%;
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.spot-card h4 {
+    color: #fff;
+    font-size: 1.2em;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+}
+
+/* テーマカラー */
+.pink-theme h4 {
+    background-color: #F48FB1; /* ピンク */
+}
+
+.blue-theme h4 {
+    background-color: #4DB6AC; /* ミントグリーン */
+}
+
+/* ---------------------------------------------------------------- */
+/* 5. フッター */
 /* ---------------------------------------------------------------- */
 footer {
     text-align: center;
-    padding: 30px 20px 0 20px;
-    font-size: 1.3em;
-    color: #880E4F;
+    padding: 20px;
+    font-size: 1em;
+    color: #66BB6A; /* 優しい緑 */
     font-weight: bold;
-    text-shadow: 1px 1px #CFD8DC;
 }
-
-/* 既存のbody::before/afterは、上記の.shape-1〜8を使用するため、
-   HTMLに記述がない限り、不要です。ここでは省略します。 */
