@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------- */
-/* 1. 基本設定：パステルカラーベース */
+/* 1. 基本設定＆背景図形（パステルカラー、固定） */
 /* ---------------------------------------------------------------- */
 * {
     box-sizing: border-box;
@@ -13,45 +13,54 @@ body {
     color: #444; 
     /* 背景: 薄い水色と薄いピンクの優しいパステルグラデーション */
     background: linear-gradient(135deg, #E0F7FA 0%, #FFC0CB 100%); 
-    padding-bottom: 50px;
+    overflow-x: hidden; 
+    position: relative;
+    padding-bottom: 80px;
 }
 
+/* 背景図形（固定、パステルカラー）: HMTLに<div class="background-shape shape-N">を追記してください */
+.background-shape { position: fixed; z-index: -1; }
+.shape-1 { @extend .background-shape; top: 50px; left: 30px; width: 60px; height: 60px; background-color: rgba(255, 171, 192, 0.8); transform: rotate(10deg); border-radius: 10px; }
+.shape-2 { @extend .background-shape; bottom: 50px; right: 30px; width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 80px solid rgba(179, 229, 252, 0.8); transform: rotate(15deg); }
+.shape-3 { @extend .background-shape; top: 100px; right: 100px; width: 40px; height: 40px; background-color: rgba(255, 255, 141, 0.9); border-radius: 50%; }
+.shape-4 { @extend .background-shape; top: 30%; left: 10px; width: 50px; height: 50px; background-color: rgba(200, 230, 201, 0.7); transform: rotate(45deg); }
+
+
 /* ---------------------------------------------------------------- */
-/* 2. タイトル (H1) */
+/* 2. H1タイトル */
 /* ---------------------------------------------------------------- */
+main { max-width: 700px; margin: 0 auto; padding: 0 15px; }
+
 h1 {
-    color: #4A148C; /* 濃い紫 */
-    background-color: #FFECB3; /* パステルイエロー */
+    color: #4A148C; 
+    background-color: #FFECB3; 
     font-size: 2.5em;
     text-align: center;
     padding: 20px 15px;
     margin: 0 auto 30px auto;
-    width: 90%;
-    /* 優しい枠と影 */
-    border: 3px solid #81D4FA; /* 明るい青の枠 */
-    box-shadow: 6px 6px 0px #F48FB1; /* 薄いピンクの影 */
+    max-width: 900px; 
+    width: 90%; 
+    border: 3px solid #81D4FA; 
+    box-shadow: 6px 6px 0px #F48FB1; 
     border-radius: 10px;
 }
 
-/* ---------------------------------------------------------------- */
-/* 3. メインコンテンツとカードデザイン (縦並び) */
-/* ---------------------------------------------------------------- */
-main {
-    max-width: 700px; /* スマホで見やすいように幅を絞る */
-    margin: 0 auto;
-    padding: 0 15px;
-}
 
+/* ---------------------------------------------------------------- */
+/* 3. セクション（info-card）の統一デザイン */
+/* ---------------------------------------------------------------- */
 .info-card {
     background: #fff;
     margin-bottom: 30px;
-    border: 2px solid #90CAF9; 
+    border: 3px solid #90CAF9; 
     border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); 
+    overflow: hidden;
     padding-bottom: 10px;
 }
 
-h2 {
+/* H2, H3のデフォルトデザイン */
+h2, h3 {
     color: #00BCD4; 
     font-size: 1.5em;
     padding: 15px 25px;
@@ -61,74 +70,66 @@ h2 {
     border-bottom: 2px solid #00BCD4;
 }
 
+h3 {
+    /* H3は少し小さく、中央寄せにする */
+    font-size: 1.4em;
+    text-align: center;
+}
+
+/* H4のデザイン */
+h4 {
+    color: #4DB6AC; 
+    font-size: 1.1em;
+    padding: 5px 25px 0 25px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
 .info-card p {
-    padding: 15px 25px;
+    padding: 5px 25px;
     margin: 0;
     font-size: 1em;
 }
 
-/* ---------------------------------------------------------------- */
-/* 4. スポットコンテナ（下段の2つのカードを縦並びにする） */
-/* ---------------------------------------------------------------- */
+/* ★★★ テーマカラー付きセクションの調整 ★★★ */
 
-.spot-container {
-    padding: 20px 10px;
-    background: #FFECB3; /* 薄い黄色を背景に使い、セクションを区切る */
-    border-radius: 15px;
-    margin-bottom: 30px;
-    border: 2px solid #FFB74D;
-    
-    /* ★★★ レイアウト修正: 横並びを解除し、縦に積み重ねるためにFlexの設定を解除 ★★★ */
-    display: block; 
+/* 子供向け（ピンク系） */
+.theme-pink { border-color: #F48FB1; } /* セクション枠の色 */
+.theme-pink h3 {
+    background-color: #F8BBD0; /* 薄いピンク */
+    color: #E91E63; /* 濃いピンク */
+    border-bottom: 3px solid #E91E63;
+    border-radius: 15px 15px 0 0;
 }
+.theme-pink h4 { color: #E91E63; }
 
-.spot-container h3 {
-    text-align: center;
-    color: #FF7043; 
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    border-bottom: 3px dashed #FFAB91; 
-    padding-bottom: 10px;
-    width: 90%; /* 全幅に近く */
-    margin-left: auto;
-    margin-right: auto;
+/* ファッション（水色系） */
+.theme-blue { border-color: #90CAF9; }
+.theme-blue h3 {
+    background-color: #B2EBF2; /* 薄いシアン */
+    color: #00BCD4; /* 濃いシアン */
+    border-bottom: 3px solid #00BCD4;
+    border-radius: 15px 15px 0 0;
 }
+.theme-blue h4 { color: #00BCD4; }
 
-.spot-card {
-    /* ★★★ レイアウト修正: 縦並びにするため幅を100%近くに戻す ★★★ */
-    width: 95%; 
-    margin: 10px auto; /* 中央に寄せて上下にマージン */
-    background: #fff;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+/* グルメ（黄色系） */
+.theme-yellow { border-color: #FFB74D; }
+.theme-yellow h2 {
+    background-color: #FFF9C4; /* 薄い黄色 */
+    color: #FFB74D; /* オレンジ */
+    border-bottom: 3px solid #FFB74D;
+    border-radius: 15px 15px 0 0;
 }
+.theme-yellow h4 { color: #FFB74D; }
 
-.spot-card h4 {
-    color: #fff;
-    font-size: 1.2em;
-    padding: 10px;
-    margin: 0;
-    text-align: left; /* 見出しは左寄せに戻す */
-    border-radius: 10px 10px 0 0;
-}
-
-/* テーマカラー */
-.pink-theme h4 {
-    background-color: #F48FB1; /* ピンク */
-}
-
-.blue-theme h4 {
-    background-color: #4DB6AC; /* ミントグリーン */
-}
 
 /* ---------------------------------------------------------------- */
-/* 5. フッター */
+/* 4. フッター */
 /* ---------------------------------------------------------------- */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px 0 20px;
     font-size: 1em;
     color: #66BB6A; 
     font-weight: bold;
