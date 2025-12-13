@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------- */
-/* 1. 基本設定（背景を濃くする） */
+/* 1. 基本設定（背景色を濃く修正） */
 /* ---------------------------------------------------------------- */
 * {
     box-sizing: border-box;
@@ -11,15 +11,97 @@ body {
     padding: 0;
     line-height: 1.6;
     color: #444; 
-    /* ★背景を濃くする: 終点のカラーコードを変更し、濃くする★ */
+    /* 背景: ピンクと水色のグラデーション（少し濃くする） */
     background: linear-gradient(135deg, #CFE8F3 0%, #FFB6C1 100%); 
     overflow-x: hidden; 
     position: relative; 
     padding-bottom: 80px;
 }
 
-/* ... [2. H1タイトル, 3. セクション, 4. テーマカラー は変更なし] ... */
+/* ---------------------------------------------------------------- */
+/* 2. H1タイトル */
+/* ---------------------------------------------------------------- */
+main { max-width: 700px; margin: 0 auto; padding: 0 15px; }
 
+h1 {
+    color: #4A148C; 
+    background-color: #FFECB3; 
+    font-size: 2.2em; 
+    text-align: center;
+    padding: 20px 15px;
+    margin: 0 auto 30px auto;
+    max-width: 900px; 
+    width: 90%; 
+    border: 3px solid #81D4FA; 
+    box-shadow: 6px 6px 0px #F48FB1; 
+    border-radius: 10px;
+    word-break: keep-all; 
+}
+
+
+/* ---------------------------------------------------------------- */
+/* 3. セクション（info-card）の統一デザイン（白い背景と枠線を復活） */
+/* ---------------------------------------------------------------- */
+.info-card {
+    background: #fff; /* ★白い背景を復活★ */
+    margin-bottom: 30px;
+    border: 3px solid #90CAF9; /* 枠線を復活 */
+    border-radius: 15px; /* 統一された角丸 */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); 
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+
+/* H2, H3の基本デザイン */
+h2, h3 {
+    color: #00BCD4; 
+    font-size: 1.5em;
+    padding: 15px 25px;
+    margin: 0;
+    background-color: #E0F7FA; 
+    border-radius: 12px 12px 0 0; 
+    border-bottom: 3px solid #00BCD4;
+}
+h3 {
+    font-size: 1.4em;
+    text-align: center;
+}
+
+/* H4のデザイン */
+h4 {
+    font-size: 1.1em;
+    padding: 5px 25px 0 25px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #4DB6AC; 
+}
+.info-card p {
+    padding: 5px 25px;
+    margin: 0;
+    font-size: 1em;
+}
+
+/* ---------------------------------------------------------------- */
+/* 4. テーマカラー（統一された形状の中で色のみを変更） */
+/* ---------------------------------------------------------------- */
+
+/* 子供向け（ピンク系） */
+.theme-pink { border-color: #F48FB1; } 
+.theme-pink h3 {
+    background-color: #F8BBD0; 
+    color: #E91E63; 
+    border-bottom-color: #E91E63;
+}
+.theme-pink h4 { color: #E91E63; }
+
+/* ファッション（水色系） */
+.theme-blue { border-color: #90CAF9; }
+.theme-blue h3 {
+    background-color: #B2EBF2; 
+    color: #00BCD4; 
+    border-bottom-color: #00BCD4;
+}
+.theme-blue h4 { color: #00BCD4; }
 
 /* ---------------------------------------------------------------- */
 /* 5. フワフワ動く背景図形（動きと配置を強化） */
@@ -27,7 +109,6 @@ body {
 
 /* アニメーション定義: 浮遊と回転 */
 @keyframes float {
-    /* ★浮遊の幅と距離を大幅に増加★ */
     0% { transform: translate(0, 0) rotate(0deg); }
     50% { transform: translate(40px, 50px) rotate(10deg); } 
     100% { transform: translate(0, 0) rotate(0deg); }
@@ -41,15 +122,14 @@ body {
 .background-shape { 
     position: fixed;
     z-index: -1;
-    opacity: 0.85; /* ★透明度を下げ、濃い背景でも目立たせる★ */
-    /* 共通アニメーション: 浮遊速度を早くする */
-    animation: float 8s ease-in-out infinite; 
+    opacity: 0.85; /* 透明度を下げ、濃い背景でも目立たせる */
+    animation: float 8s ease-in-out infinite; /* 浮遊速度を早くする */
 }
 
 /* 図形1: ピンクの四角 (左上 => メインコンテンツに寄せる) */
 .shape-1 { 
     top: 100px; left: 100px; width: 90px; height: 90px; 
-    background-color: rgba(255, 171, 192, 0.95); /* 不透明度を上げる */
+    background-color: rgba(255, 171, 192, 0.95); 
     border-radius: 15px;
     animation-duration: 9s;
 }
@@ -109,4 +189,13 @@ body {
     animation-delay: 3s;
 }
 
-/* ... [6. フッターは変更なし] ... */
+/* ---------------------------------------------------------------- */
+/* 6. フッター */
+/* ---------------------------------------------------------------- */
+footer {
+    text-align: center;
+    padding: 30px 20px 0 20px;
+    font-size: 1em;
+    color: #66BB6A; 
+    font-weight: bold;
+}
