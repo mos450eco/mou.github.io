@@ -1,13 +1,35 @@
-/* ... [他のCSSセクション (1. 基本設定, 2. H1, 3. セクション, 4. テーマカラー) は変更なし] ... */
+/* ---------------------------------------------------------------- */
+/* 1. 基本設定（背景を濃くする） */
+/* ---------------------------------------------------------------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #444; 
+    /* ★背景を濃くする: 終点のカラーコードを変更し、濃くする★ */
+    background: linear-gradient(135deg, #CFE8F3 0%, #FFB6C1 100%); 
+    overflow-x: hidden; 
+    position: relative; 
+    padding-bottom: 80px;
+}
+
+/* ... [2. H1タイトル, 3. セクション, 4. テーマカラー は変更なし] ... */
+
 
 /* ---------------------------------------------------------------- */
-/* 5. フワフワ動く背景図形（アニメーション強化版） */
+/* 5. フワフワ動く背景図形（動きと配置を強化） */
 /* ---------------------------------------------------------------- */
 
-/* アニメーション定義: 浮遊と回転（アニメーションの動きを大きくする） */
+/* アニメーション定義: 浮遊と回転 */
 @keyframes float {
+    /* ★浮遊の幅と距離を大幅に増加★ */
     0% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(25px, 35px) rotate(8deg); } /* ★浮遊距離を増加★ */
+    50% { transform: translate(40px, 50px) rotate(10deg); } 
     100% { transform: translate(0, 0) rotate(0deg); }
 }
 
@@ -19,72 +41,72 @@
 .background-shape { 
     position: fixed;
     z-index: -1;
-    opacity: 0.7; /* 濃くして目立たせる */
-    /* 共通アニメーション */
-    animation: float 12s ease-in-out infinite; /* ★速度を少しゆっくりにする★ */
+    opacity: 0.85; /* ★透明度を下げ、濃い背景でも目立たせる★ */
+    /* 共通アニメーション: 浮遊速度を早くする */
+    animation: float 8s ease-in-out infinite; 
 }
 
-/* ★★★ 図形を大きくし、数を増やします ★★★ */
-
-/* 図形1: ピンクの四角 (左上) */
+/* 図形1: ピンクの四角 (左上 => メインコンテンツに寄せる) */
 .shape-1 { 
-    top: 50px; left: 30px; width: 90px; height: 90px; /* ★サイズアップ★ */
-    background-color: rgba(255, 171, 192, 0.9); 
+    top: 100px; left: 100px; width: 90px; height: 90px; 
+    background-color: rgba(255, 171, 192, 0.95); /* 不透明度を上げる */
     border-radius: 15px;
+    animation-duration: 9s;
 }
 
-/* 図形2: 水色の三角 (右下) */
+/* 図形2: 水色の三角 (右下 => メインコンテンツに寄せる) */
 .shape-2 { 
-    bottom: 50px; right: 30px; width: 0; height: 0;
-    border-left: 70px solid transparent; /* ★サイズアップ★ */
-    border-right: 70px solid transparent; /* ★サイズアップ★ */
-    border-bottom: 110px solid rgba(179, 229, 252, 0.9); /* ★サイズアップ★ */
+    bottom: 100px; right: 100px; width: 0; height: 0;
+    border-left: 70px solid transparent; 
+    border-right: 70px solid transparent; 
+    border-bottom: 110px solid rgba(179, 229, 252, 0.95); 
     animation-delay: 2s; 
+    animation-duration: 10s;
 }
 
-/* 図形3: 黄色の円 (右上) */
+/* 図形3: 黄色の円 (右上 => メインコンテンツに寄せる) */
 .shape-3 { 
-    top: 150px; right: 80px; width: 60px; height: 60px; /* ★サイズアップ★ */
-    background-color: rgba(255, 255, 141, 0.9);
+    top: 250px; right: 150px; width: 60px; height: 60px; 
+    background-color: rgba(255, 255, 141, 0.95);
     border-radius: 50%;
-    animation: rotate-slow 25s linear infinite; 
+    animation: rotate-slow 20s linear infinite; 
 }
 
-/* 図形4: 緑のひし形 (左中) */
+/* 図形4: 緑のひし形 (左中 => メインコンテンツに寄せる) */
 .shape-4 { 
-    top: 60%; left: 10px; width: 70px; height: 70px; /* ★サイズアップ★ */
-    background-color: rgba(200, 230, 201, 0.8); 
+    top: 40%; left: 100px; width: 70px; height: 70px; 
+    background-color: rgba(200, 230, 201, 0.9); 
     transform: rotate(45deg);
     animation-delay: 4s; 
+    animation-duration: 8s;
 }
 
-/* ★★★ 新規追加の図形 ★★★ */
-
-/* 図形5: 小さめの水色丸 (中央上部) */
+/* 図形5: 小さめの水色丸 (中央上部 => メインコンテンツに寄せる) */
 .shape-5 {
-    top: 300px; left: 20%; width: 45px; height: 45px;
-    background-color: rgba(179, 229, 252, 0.9);
+    top: 350px; left: 30%; width: 45px; height: 45px;
+    background-color: rgba(179, 229, 252, 0.95);
     border-radius: 50%;
-    animation: float 10s reverse ease-in-out infinite; /* 逆方向に浮遊 */
+    animation: float 7s reverse ease-in-out infinite; 
     animation-delay: 1s;
 }
 
-/* 図形6: 長方形のピンク (右中) */
+/* 図形6: 長方形のピンク (右中 => メインコンテンツに寄せる) */
 .shape-6 {
-    top: 45%; right: 5%; width: 120px; height: 40px;
-    background-color: rgba(255, 171, 192, 0.7);
+    top: 60%; right: 10%; width: 120px; height: 40px;
+    background-color: rgba(255, 171, 192, 0.9);
     border-radius: 5px;
     transform: rotate(-10deg);
-    animation: float 14s ease-in-out infinite;
+    animation: float 11s ease-in-out infinite;
     animation-delay: 6s;
 }
 
-/* 図形7: 小さめの黄色のひし形 (中央下部) */
+/* 図形7: 小さめの黄色のひし形 (中央下部 => メインコンテンツに寄せる) */
 .shape-7 {
-    bottom: 15%; left: 35%; width: 30px; height: 30px;
-    background-color: rgba(255, 255, 141, 0.9);
+    bottom: 20%; left: 30%; width: 30px; height: 30px;
+    background-color: rgba(255, 255, 141, 0.95);
     transform: rotate(45deg);
-    animation: float 8s ease-in-out infinite;
+    animation: float 6s ease-in-out infinite;
     animation-delay: 3s;
 }
+
 /* ... [6. フッターは変更なし] ... */
