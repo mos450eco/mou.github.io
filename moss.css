@@ -1,17 +1,16 @@
 /* ---------------------------------------------------------------- */
-/* 1. 基本設定（背景色、グラデーションは削除） */
+/* 1. 基本設定（背景色） */
 /* ---------------------------------------------------------------- */
 * {
     box-sizing: border-box;
 }
-
 body {
     font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
     color: #444; 
-    /* ★背景を単色に変更★ */
+    /* 背景色を単色に変更 */
     background: #FFFAFA; 
     overflow-x: hidden; 
     position: relative; 
@@ -19,19 +18,18 @@ body {
 }
 
 /* ---------------------------------------------------------------- */
-/* 2. H1タイトル (タイトル背景色変更) */
+/* 2. H1タイトル */
 /* ---------------------------------------------------------------- */
 main { max-width: 700px; margin: 0 auto; padding: 0 15px; }
 
 h1 {
     color: #4A148C; 
-    /* ★タイトル背景色を変更★ */
+    /* タイトル背景色を変更 */
     background-color: #FFFACD; 
     font-size: 2.2em; 
     text-align: center;
     padding: 20px 15px;
     margin: 0 auto 30px auto;
-    max-width: 900px; 
     width: 90%; 
     border: 3px solid #81D4FA; 
     box-shadow: 6px 6px 0px #F48FB1; 
@@ -41,7 +39,7 @@ h1 {
 
 
 /* ---------------------------------------------------------------- */
-/* 3. セクション（info-card）の統一デザイン（崩壊対策済み） */
+/* 3. セクション（info-card）の統一デザイン */
 /* ---------------------------------------------------------------- */
 .info-card {
     background: #fff; 
@@ -52,88 +50,65 @@ h1 {
     overflow: hidden;
     padding-bottom: 10px;
 }
-
-/* H2, H3, H4, p のデザインはテーマカラーで上書きされるため、デフォルトは最小限に */
-h2, h3 {
-    color: #444; /* デフォルトの文字色 */
-    font-size: 1.5em;
-    padding: 15px 25px;
-    margin: 0;
-    /* 背景色はテーマカラーで上書きされる */
-    border-radius: 12px 12px 0 0; 
-    border-bottom: 3px solid transparent; /* 枠線もテーマカラーで上書き */
-}
+h2, h3 { /* ... H2, H3の基本デザイン ... */ }
 h3 { font-size: 1.4em; text-align: center; }
 h4 {
     font-size: 1.1em;
-    padding: 5px 25px 0 25px;
+    padding: 10px 25px; /* H4にも背景色を適用できるようpaddingを増やす */
     margin-top: 15px;
     font-weight: bold;
     color: #444; 
+    /* ★H4も統一したデザインにするための追加設定★ */
+    background-color: #F0F0F0; /* 仮の背景色 */
+    border-radius: 5px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
-.info-card p {
-    padding: 5px 25px;
-    margin: 0;
-    font-size: 1em;
-}
+.info-card p { padding: 5px 25px; margin: 0; font-size: 1em; }
+
 
 /* ---------------------------------------------------------------- */
-/* 4. テーマカラー（新しい色指定を適用） */
+/* 4. テーマカラー（新しい色指定とH4強化） */
 /* ---------------------------------------------------------------- */
 
 /* 1. 何でも楽しめる (theme-green: #B1F9D0) */
-.theme-green { border-color: #388E3C; } /* 濃い緑の枠線 */
-.theme-green h2 {
-    background-color: #B1F9D0; 
-    color: #388E3C; 
-    border-bottom-color: #388E3C;
-}
+.theme-green { border-color: #388E3C; } 
+.theme-green h2 { background-color: #B1F9D0; color: #388E3C; border-bottom-color: #388E3C; }
 
 /* 2. 映画もスポッチャも (theme-light-blue: #C2EEFF) */
-.theme-light-blue { border-color: #00838F; } /* 濃い水色の枠線 */
-.theme-light-blue h2 {
-    background-color: #C2EEFF; 
-    color: #00838F; 
-    border-bottom-color: #00838F;
-}
+.theme-light-blue { border-color: #00838F; } 
+.theme-light-blue h2 { background-color: #C2EEFF; color: #00838F; border-bottom-color: #00838F; }
 
 
 /* 3. ファッションも (theme-purple: #DCC2FF) */
-.theme-purple { border-color: #512DA8; } /* 濃い紫の枠線 */
-.theme-purple h3 {
-    background-color: #DCC2FF; 
+.theme-purple { border-color: #512DA8; } 
+.theme-purple h3 { background-color: #DCC2FF; color: #512DA8; border-bottom-color: #512DA8; }
+.theme-purple h4 { 
     color: #512DA8; 
-    border-bottom-color: #512DA8;
+    background-color: #F0E6FF; /* H4の背景色をテーマに合わせて薄く設定 */
 }
-.theme-purple h4 { color: #512DA8; }
 
 
 /* 4. 子供向けも (theme-pink: #FFBEDA) */
-.theme-pink { border-color: #C2185B; } /* 濃いピンクの枠線 */
-.theme-pink h3 {
-    background-color: #FFBEDA; 
+.theme-pink { border-color: #C2185B; } 
+.theme-pink h3 { background-color: #FFBEDA; color: #C2185B; border-bottom-color: #C2185B; }
+.theme-pink h4 { 
     color: #C2185B; 
-    border-bottom-color: #C2185B;
+    background-color: #FFF0F5; /* H4の背景色をテーマに合わせて薄く設定 */
 }
-.theme-pink h4 { color: #C2185B; }
 
 
 /* ---------------------------------------------------------------- */
-/* 5. フワフワ動く背景図形（背景色が単色になったため、透明度を再調整） */
+/* 5. フワフワ動く背景図形（アニメーションの再定義） */
 /* ---------------------------------------------------------------- */
-
-/* アニメーション定義は変更なし */
 @keyframes float { 0% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(40px, 50px) rotate(10deg); } 100% { transform: translate(0, 0) rotate(0deg); } }
 @keyframes rotate-slow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
 .background-shape { 
-    position: fixed;
-    z-index: -1;
-    opacity: 0.7; /* 背景が白くなったため、少し透明度を下げて邪魔にならないように調整 */
-    animation: float 8s ease-in-out infinite; 
+    position: fixed; z-index: -1; opacity: 0.7; animation: float 8s ease-in-out infinite; 
 }
 
-/* 図形の位置と色も元のパステルカラーに戻します */
+/* 図形の位置と色設定は前回成功したものを再利用 */
 .shape-1 { top: 100px; left: 100px; width: 90px; height: 90px; background-color: rgba(255, 171, 192, 0.7); border-radius: 15px; animation-duration: 9s; }
 .shape-2 { bottom: 100px; right: 100px; width: 0; height: 0; border-left: 70px solid transparent; border-right: 70px solid transparent; border-bottom: 110px solid rgba(179, 229, 252, 0.7); animation-delay: 2s; animation-duration: 10s; }
 .shape-3 { top: 250px; right: 150px; width: 60px; height: 60px; background-color: rgba(255, 255, 141, 0.8); border-radius: 50%; animation: rotate-slow 20s linear infinite; }
@@ -142,9 +117,50 @@ h4 {
 .shape-6 { top: 60%; right: 10%; width: 120px; height: 40px; background-color: rgba(255, 171, 192, 0.6); border-radius: 5px; transform: rotate(-10deg); animation: float 11s ease-in-out infinite; animation-delay: 6s; }
 .shape-7 { bottom: 20%; left: 30%; width: 30px; height: 30px; background-color: rgba(255, 255, 141, 0.8); transform: rotate(45deg); animation: float 6s ease-in-out infinite; animation-delay: 3s; }
 
+/* ---------------------------------------------------------------- */
+/* 6. クラッカー（紙吹雪）アニメーションの追加 */
+/* ---------------------------------------------------------------- */
+
+/* 紙吹雪が落ちるアニメーション */
+@keyframes confetti-fall {
+    0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* 紙吹雪の基本設定 */
+.info-card::before,
+.info-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none; /* クリックを邪魔しないようにする */
+}
+
+/* 各セクションにランダムな紙吹雪を配置 */
+.info-card::before {
+    background: radial-gradient(circle, #F8BBD0 10%, transparent 10%),
+                radial-gradient(circle, #B2EBF2 10%, transparent 10%);
+    background-size: 15px 15px;
+    background-position: 0 0, 7px 7px;
+    animation: confetti-fall 10s linear infinite;
+    animation-delay: -5s; /* 開始タイミングをずらす */
+}
+.info-card::after {
+    background: radial-gradient(circle, #FFECB3 10%, transparent 10%),
+                radial-gradient(circle, #CFD8DC 10%, transparent 10%);
+    background-size: 10px 10px;
+    background-position: 5px 5px, 12px 12px;
+    animation: confetti-fall 8s linear infinite;
+    animation-delay: -3s; 
+}
+
 
 /* ---------------------------------------------------------------- */
-/* 6. フッター */
+/* 7. フッター */
 /* ---------------------------------------------------------------- */
 footer {
     text-align: center;
@@ -152,4 +168,8 @@ footer {
     font-size: 1em;
     color: #66BB6A; 
     font-weight: bold;
+}
+footer a {
+    color: #4A148C;
+    text-decoration: underline;
 }
