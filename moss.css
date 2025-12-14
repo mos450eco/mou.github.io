@@ -14,17 +14,18 @@ body {
     background: #FFFAFA; 
     overflow-x: hidden; 
     position: relative; 
-    padding-bottom: 40px; /* ★余白を80pxから40pxに削減★ */
+    padding-bottom: 40px; 
 }
 
 /* ---------------------------------------------------------------- */
-/* 2. H1タイトル */
+/* 2. H1タイトル (スマホ対応を強化) */
 /* ---------------------------------------------------------------- */
 main { max-width: 700px; margin: 0 auto; padding: 0 15px; }
 
 h1 {
     color: #4A148C; 
     background-color: #FFFACD; 
+    /* PCサイズでのフォントサイズ */
     font-size: 2.2em; 
     text-align: center;
     padding: 20px 15px;
@@ -34,6 +35,16 @@ h1 {
     box-shadow: 6px 6px 0px #F48FB1; 
     border-radius: 10px;
     word-break: keep-all; 
+}
+
+/* ★スマホ対応: タイトルがはみ出るのを修正するメディアクエリ★ */
+@media (max-width: 600px) {
+    h1 {
+        /* スマホでは文字サイズを小さくする */
+        font-size: 1.6em; 
+        /* パディングを少し減らす */
+        padding: 15px 10px; 
+    }
 }
 
 
@@ -48,7 +59,15 @@ h1 {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); 
     overflow: hidden;
     padding-bottom: 10px;
+    position: relative; /* クラッカー削除のため、念のためpositionは維持 */
 }
+
+/* ★点線（クラッカーアニメーション）の原因だった擬似要素を削除★ */
+.info-card::before,
+.info-card::after {
+    content: none; 
+}
+
 /* ... H2, H3, H4, p のデザインは前回と同じ ... */
 h2, h3 { color: #444; font-size: 1.5em; padding: 15px 25px; margin: 0; border-radius: 12px 12px 0 0; border-bottom: 3px solid transparent; }
 h3 { font-size: 1.4em; text-align: center; }
@@ -69,38 +88,30 @@ h4 {
 /* ---------------------------------------------------------------- */
 /* 4. テーマカラー（色指定はそのまま） */
 /* ---------------------------------------------------------------- */
-
-/* 1. 何でも楽しめる (theme-green: #B1F9D0) */
+/* ... theme-green, theme-light-blue, theme-purple, theme-pink は変更なし ... */
 .theme-green { border-color: #388E3C; } 
 .theme-green h2 { background-color: #B1F9D0; color: #388E3C; border-bottom-color: #388E3C; }
 
-/* 2. 映画もスポッチャも (theme-light-blue: #C2EEFF) */
 .theme-light-blue { border-color: #00838F; } 
 .theme-light-blue h2 { background-color: #C2EEFF; color: #00838F; border-bottom-color: #00838F; }
 
-
-/* 3. ファッションも (theme-purple: #DCC2FF) */
 .theme-purple { border-color: #512DA8; } 
 .theme-purple h3 { background-color: #DCC2FF; color: #512DA8; border-bottom-color: #512DA8; }
-.theme-purple h4 { color: #512DA8; background-color: #F0E6FF; } /* H4背景色をテーマに合わせて薄く設定 */
+.theme-purple h4 { color: #512DA8; background-color: #F0E6FF; } 
 
-
-/* 4. 子供向けも (theme-pink: #FFBEDA) */
 .theme-pink { border-color: #C2185B; } 
 .theme-pink h3 { background-color: #FFBEDA; color: #C2185B; border-bottom-color: #C2185B; }
-.theme-pink h4 { color: #C2185B; background-color: #FFF0F5; } /* H4背景色をテーマに合わせて薄く設定 */
+.theme-pink h4 { color: #C2185B; background-color: #FFF0F5; } 
 
 
 /* ---------------------------------------------------------------- */
-/* 5. フワフワ動く背景図形（アニメーションの再定義と確認） */
+/* 5. フワフワ動く背景図形（アニメーションは前回成功したものを維持） */
 /* ---------------------------------------------------------------- */
 @keyframes float { 0% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(40px, 50px) rotate(10deg); } 100% { transform: translate(0, 0) rotate(0deg); } }
 @keyframes rotate-slow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-.background-shape { 
-    position: fixed; z-index: -1; opacity: 0.7; animation: float 8s ease-in-out infinite; 
-}
-/* 図形の位置と色設定は変更なし */
+.background-shape { position: fixed; z-index: -1; opacity: 0.7; animation: float 8s ease-in-out infinite; }
+/* ... shape-1 から shape-7 までの位置とサイズ設定は前回成功したものを維持 ... */
 .shape-1 { top: 100px; left: 100px; width: 90px; height: 90px; background-color: rgba(255, 171, 192, 0.7); border-radius: 15px; animation-duration: 9s; }
 .shape-2 { bottom: 100px; right: 100px; width: 0; height: 0; border-left: 70px solid transparent; border-right: 70px solid transparent; border-bottom: 110px solid rgba(179, 229, 252, 0.7); animation-delay: 2s; animation-duration: 10s; }
 .shape-3 { top: 250px; right: 150px; width: 60px; height: 60px; background-color: rgba(255, 255, 141, 0.8); border-radius: 50%; animation: rotate-slow 20s linear infinite; }
@@ -115,8 +126,7 @@ h4 {
 /* ---------------------------------------------------------------- */
 footer {
     text-align: center;
-    /* padding-topを確保 */
-    padding: 30px 20px 0 20px; 
+    padding: 30px 20px 0 20px;
     font-size: 1em;
     color: #66BB6A; 
     font-weight: bold;
