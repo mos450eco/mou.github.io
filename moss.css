@@ -19,6 +19,29 @@ body {
 }
 
 /* ---------------------------------------------------------------- */
+/* 2-B. 導入文（introduction）のスタイル */
+/* ---------------------------------------------------------------- */
+.introduction {
+    max-width: 650px;
+    margin: -15px auto 30px auto; /* H1とセクションの間隔を調整 */
+    padding: 15px 20px;
+    text-align: left; /* ★文章が長くなったので、中央揃えから左揃えに変更★ */
+    font-size: 1.1em;
+    color: #333;
+    background-color: #F0F8FF; /* 優しい水色の背景色 */
+    border-radius: 8px;
+    border: 1px solid #B0E0E6; 
+}
+
+/* スマホでの調整（文字サイズを少し小さくする） */
+@media (max-width: 600px) {
+    .introduction {
+        font-size: 1em;
+        padding: 10px 15px;
+    }
+}
+
+/* ---------------------------------------------------------------- */
 /* 2. H1タイトル (スマホ対応を強化) */
 /* ---------------------------------------------------------------- */
 main { max-width: 700px; margin: 0 auto; padding: 0 15px; }
