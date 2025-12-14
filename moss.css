@@ -19,27 +19,40 @@ body {
 }
 
 /* ---------------------------------------------------------------- */
-/* 2-B. 導入文（introduction）のスタイル */
+/* 2-B. 導入文（introduction）のスタイルを修正 */
 /* ---------------------------------------------------------------- */
 .introduction {
     max-width: 650px;
-    margin: -15px auto 30px auto; /* H1とセクションの間隔を調整 */
-    padding: 15px 20px;
-    text-align: left; /* ★文章が長くなったので、中央揃えから左揃えに変更★ */
+    /* 位置はH1の下、メインセクションの上に配置 */
+    margin: -15px auto 30px auto; 
+    padding: 20px 25px; /* パディングを増やしてゆったりさせる */
+    text-align: left; 
     font-size: 1.1em;
     color: #333;
-    background-color: #F0F8FF; /* 優しい水色の背景色 */
-    border-radius: 8px;
-    border: 1px solid #B0E0E6; 
+    
+    /* ★デザイン修正ポイント：枠線と背景色を、他のセクションの青系に合わせる★ */
+    background-color: #E0F7FA; /* 淡い水色 */
+    border: 3px solid #00BCD4; /* 濃い水色の枠線 */
+    border-radius: 15px; /* 角丸を他のセクションに合わせる */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* 影をつけて浮き上がらせる */
 }
 
-/* スマホでの調整（文字サイズを少し小さくする） */
+/* 導入文の中の特に強調したい文字（アリオ柏）の装飾 */
+.introduction strong {
+    color: #4A148C; /* H1と同じ濃い紫系の色 */
+    font-weight: bold;
+    text-decoration: underline; /* 下線を引く */
+    font-size: 1.1em; /* 少し文字を大きくする */
+}
+
+/* スマホでの調整 */
 @media (max-width: 600px) {
     .introduction {
         font-size: 1em;
-        padding: 10px 15px;
+        padding: 15px 15px;
     }
 }
+
 
 /* ---------------------------------------------------------------- */
 /* 2. H1タイトル (スマホ対応を強化) */
